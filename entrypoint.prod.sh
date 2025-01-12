@@ -2,7 +2,7 @@
 
 # Check if .env exists, if not, copy from .env.example
 if [ ! -f .env ]; then
-  cp .env.prod.example .env.prod
+  cp .env.prod.example .env
 fi
 
 # Check if the SQLite database file exists, if not, create it

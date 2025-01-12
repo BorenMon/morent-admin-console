@@ -14,14 +14,11 @@ apt-get install -y nodejs
 COPY . /var/www/app
 WORKDIR /var/www/app
 
-RUN chown -R www-data:www-data /var/www/app \
-    && chmod -R 775 /var/www/app/storage
-
 # install composer
 COPY --from=composer:2.6.5 /usr/bin/composer /usr/local/bin/composer
 
 # Install PHP dependencies
-RUN composer install
+RUN composer install --no-dev --optimize-autoloader
 
 # Install Node.js dependencies
 RUN npm install && npm run build
