@@ -11,9 +11,7 @@ if [ ! -f database/database.sqlite ]; then
 fi
 
 # Generate application key if not set
-if [ -z "$(php artisan key:generate --show)" ]; then
-  php artisan key:generate
-fi
+php artisan key:generate
 
 # Run migrations
 php artisan migrate
