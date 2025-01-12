@@ -5,6 +5,7 @@ vendor
 # Ignore environment files (usually sensitive information)
 .env
 .env.local
+.env.prod
 
 # Ignore logs and caches
 storage/logs
