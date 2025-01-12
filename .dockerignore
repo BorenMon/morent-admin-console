@@ -1,0 +1,35 @@
+# Ignore node_modules and vendor directories to prevent re-installing them
+node_modules
+vendor
+
+# Ignore environment files (usually sensitive information)
+.env
+.env.local
+
+# Ignore logs and caches
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+bootstrap/cache/*.php
+
+# Ignore build outputs
+npm-debug.log
+yarn-error.log
+*.log
+*.lock
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignore IDE files
+.idea
+*.iml
+*.vscode
+*.swp
+.DS_Store
+
+# Ignore system files
+Thumbs.db

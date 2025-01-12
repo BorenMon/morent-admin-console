@@ -1,0 +1,12 @@
+services:
+  morent-admin-console:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: morent-admin-console
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
