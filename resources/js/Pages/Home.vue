@@ -57,7 +57,7 @@ const getDate = (date) =>
                             :src="
                                 user.avatar
                                     ? 'storage/' + user.avatar
-                                    : 'storage/avatars/default.jpg'
+                                    : 'assets/images/default.jpg'
                             "
                             class="avatar"
                         />

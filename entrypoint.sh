@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# Check if .env exists, if not, copy from .env.example
-if [ ! -f .env ]; then
-  cp .env.example .env
-fi
-
 # Check if the SQLite database file exists, if not, create it
 if [ ! -f database/database.sqlite ]; then
   touch database/database.sqlite
