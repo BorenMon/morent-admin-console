@@ -23,5 +23,8 @@ COPY entrypoint.prod.sh /usr/local/bin/
 # Make the entrypoint script executable
 RUN chmod +x /usr/local/bin/entrypoint.prod.sh
 
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Use the entrypoint script
 ENTRYPOINT ["entrypoint.prod.sh"]
