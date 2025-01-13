@@ -17,14 +17,15 @@ WORKDIR /var/www/app
 # install composer
 COPY --from=composer:2.8.4 /usr/bin/composer /usr/local/bin/composer
 
+# Set permissions
+RUN chown -R www-data:www-data /var/www/app/storage && \
+    chmod -R 775 /var/www/app/storage
+
 # Copy entrypoint script
 COPY entrypoint.prod.sh /usr/local/bin/
 
 # Make the entrypoint script executable
 RUN chmod +x /usr/local/bin/entrypoint.prod.sh
-
-# Set permissions
-RUN chown -R /var/www/app/storage /var/www/app/bootstrap/cache
 
 # Use the entrypoint script
 ENTRYPOINT ["entrypoint.prod.sh"]
