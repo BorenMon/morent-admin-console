@@ -14,7 +14,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - .:/var/www/html:delegated
     depends_on:
-      - php
+      - app
     networks:
       - laravel
 
@@ -27,6 +27,8 @@ services:
     tty: true
     env_file:
       - .env
+    depends_on:
+      - db
     expose:
       - "9000"
     volumes:
