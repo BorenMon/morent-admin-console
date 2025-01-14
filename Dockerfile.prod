@@ -11,15 +11,15 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
 apt-get install -y nodejs
 
 # Set the working directory
-COPY . /var/www/app
-WORKDIR /var/www/app
+COPY . /var/www/html
+WORKDIR /var/www/html
 
 # install composer
 COPY --from=composer:2.8.4 /usr/bin/composer /usr/local/bin/composer
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/app/storage && \
-    chmod -R 775 /var/www/app/storage
+RUN chown -R www-data:www-data /var/www/html/storage && \
+    chmod -R 775 /var/www/html/storage
 
 # Copy entrypoint script
 COPY entrypoint.prod.sh /usr/local/bin/

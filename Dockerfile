@@ -2,27 +2,21 @@ FROM php:8.1.31
 
 # Install system dependencies
 RUN apt-get update -y && \
-    apt-get install -y openssl zip unzip git sqlite3 libsqlite3-dev curl && \
-    docker-php-ext-install pdo pdo_sqlite
+    apt-get install -y openssl zip unzip default-libmysqlclient-dev curl && \
+    docker-php-ext-install pdo pdo_mysql
 
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Set the working directory
-WORKDIR /morent-admin-console
+WORKDIR /var/www/html
 
 # Copy the application files
-COPY . /morent-admin-console
-
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-# Install Node.js dependencies
-RUN npm install && npm run build
+COPY . /var/www/html
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/
