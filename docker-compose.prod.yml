@@ -15,8 +15,6 @@ services:
       - .:/var/www/html:delegated
     depends_on:
       - app
-    networks:
-      - laravel
 
   app:
     build:
@@ -33,8 +31,6 @@ services:
       - "9000"
     volumes:
       - .:/var/www/html:delegated
-    networks:
-      - laravel
 
   db:
     image: mysql:9.1.0
